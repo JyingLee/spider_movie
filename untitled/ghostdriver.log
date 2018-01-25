@@ -1,0 +1,15 @@
+[INFO  - 2018-01-24T08:12:21.749Z] GhostDriver - Main - running on port 62513
+[INFO  - 2018-01-24T08:12:22.132Z] Session [4db530e0-00de-11e8-a969-6d2765985e70] - page.settings - {"XSSAuditingEnabled":false,"javascriptCanCloseWindows":true,"javascriptCanOpenWindows":true,"javascriptEnabled":true,"loadImages":true,"localToRemoteUrlAccessEnabled":false,"userAgent":"Mozilla/5.0 (Windows NT 6.2; WOW64) AppleWebKit/538.1 (KHTML, like Gecko) PhantomJS/2.1.1 Safari/538.1","webSecurityEnabled":true}
+[INFO  - 2018-01-24T08:12:22.132Z] Session [4db530e0-00de-11e8-a969-6d2765985e70] - page.customHeaders:  - {}
+[INFO  - 2018-01-24T08:12:22.132Z] Session [4db530e0-00de-11e8-a969-6d2765985e70] - Session.negotiatedCapabilities - {"browserName":"phantomjs","version":"2.1.1","driverName":"ghostdriver","driverVersion":"1.2.0","platform":"windows-10-32bit","javascriptEnabled":true,"takesScreenshot":true,"handlesAlerts":false,"databaseEnabled":false,"locationContextEnabled":false,"applicationCacheEnabled":false,"browserConnectionEnabled":false,"cssSelectorsEnabled":true,"webStorageEnabled":false,"rotatable":false,"acceptSslCerts":false,"nativeEvents":true,"proxy":{"proxyType":"direct"}}
+[INFO  - 2018-01-24T08:12:22.132Z] SessionManagerReqHand - _postNewSessionCommand - New Session Created: 4db530e0-00de-11e8-a969-6d2765985e70
+[ERROR - 2018-01-24T08:12:27.518Z] Session [4db530e0-00de-11e8-a969-6d2765985e70] - page.onError - msg: TypeError: undefined is not an object (evaluating 'keywords.content')
+
+  phantomjs://platform/console++.js:263 in error
+[ERROR - 2018-01-24T08:12:27.519Z] Session [4db530e0-00de-11e8-a969-6d2765985e70] - page.onError - stack:
+  (anonymous function) (http://zy.nszmz.com/scrtips/yingshidaquan.js:50)
+  withJQ (http://zy.nszmz.com/scrtips/yingshidaquan.js:23)
+  (anonymous function) (http://zy.nszmz.com/scrtips/yingshidaquan.js:47)
+  onreadystatechange (http://zy.nszmz.com/scrtips/yingshidaquan.js:36)
+
+  phantomjs://platform/console++.js:263 in error
