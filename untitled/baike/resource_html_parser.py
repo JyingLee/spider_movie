@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import mysql.connector
+import threading
 
 
 class ResourseHtml(object):
@@ -14,29 +15,34 @@ class ResourseHtml(object):
             # if response.getcode() != 200:
             #     return
 
+            newThread = threading.Thread(target=self.spiderThread, args=(data,))
+            newThread.start()
+            newThread.join()
+
+    def spiderThread(self, data):
+        lock = threading.Lock()
+        lock.acquire()
+        try:
             driver = webdriver.PhantomJS()
             driver.get(data['url'])
             if driver.page_source is None:
                 return
             soup = BeautifulSoup(driver.page_source, "html.parser")
             try:
-                link = soup.find('div', class_='addss').find('input', type='text')
+                link = soup.find('div', class_='addss')
+                if link is not None:
+                    link = soup.find('div', class_='addss').find('input', type='text')
+                else:
+                    link = soup.find('div', class_='adds').find('input', type='checkbox')
                 pic = soup.find('div', class_='pic').find('img')
                 title = soup.find('h1')
             except Exception as e:
                 print("该链接没有资源:" + data['url'])
-                continue
+                return
             if link is None or pic is None or title is None:
-                continue
+                return
             else:
                 print(link['value'] + '\n' + pic['src'] + '\n' + title.get_text())
-                #             conn = mysql.connector.connect(user='root', password='', database='python_test')
-                # cursor = conn.cursor()
-                # cursor.execute('create table user(id varchar(20) PRIMARY  KEY ,name1 VARCHAR(20))')
-                # cursor.execute('insert into user(id,name1) VALUES (%s,%s)', ['1', 'jying'])
-                # print(cursor.rowcount)
-                # conn.commit()
-                # cursor.close()
                 conn = mysql.connector.connect(user='root', password='', database='spider_movie')
                 cursor = conn.cursor()
                 cursor.execute(
@@ -48,3 +54,5 @@ class ResourseHtml(object):
                                [title.get_text(), pic['src'], link['value']])
                 conn.commit()
                 cursor.close()
+        finally:
+            lock.release()

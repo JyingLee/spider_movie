@@ -19,7 +19,7 @@ class SpiderMain(object):
                 new_urls, new_data = self.parser.parse(new_url, html_con)  # 解析url网页
                 self.urls.add_new_urls(new_urls)  # 添加新解析到的批量的url
                 self.outputer.collect_data(new_data)  # 收集需要的数据
-                if count == 3:
+                if count == 5:
                     break
                 count += 1
             except Exception as e:
