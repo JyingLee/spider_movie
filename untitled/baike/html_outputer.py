@@ -22,6 +22,7 @@ class HtmlOutputer(object):
         # fout.write("</html>")
         #
         # fout.close()
+        del self.datas[0]
         self.getResourse.getResourse(self.datas)
 
     def collect_data(self, new_data):
